@@ -14,9 +14,9 @@ class Triangle:
     b: Point
     c: Point
 
-    def get_area(self):
+    def get_area(self) -> float:
         """Computes the area of the triangle abc."""
-        return (
+        area = (
             abs(
                 self.a.x * (self.b.y - self.c.y)
                 + self.b.x * (self.c.y - self.a.y)
@@ -24,10 +24,11 @@ class Triangle:
             )
             / 2
         )
+        return area
 
 
 def is_point_in_triangle_area(a: Point, b: Point, c: Point, p: Point) -> bool:
-    """Tests whether point p is contained in the triangle abc.
+    """Tests whether point p is contained in the triangle formed by a, b, and c.
     This is done by comparing the area of abc with the areas of abp, apc, and pbc.
     """
     t_abc = Triangle(a, b, c)
@@ -35,6 +36,6 @@ def is_point_in_triangle_area(a: Point, b: Point, c: Point, p: Point) -> bool:
     t_apc = Triangle(a, p, c)
     t_pbc = Triangle(p, b, c)
 
-    return isclose(
-        t_abc.get_area(), t_abp.get_area() + t_apc.get_area() + t_pbc.get_area()
-    )
+    area_triangles = t_abp.get_area() + t_apc.get_area() + t_pbc.get_area()
+
+    return isclose(t_abc.get_area(), area_triangles)
