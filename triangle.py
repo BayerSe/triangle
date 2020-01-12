@@ -27,6 +27,16 @@ class Triangle:
         return area
 
 
+def is_point_in_triangle(
+    a: Point, b: Point, c: Point, p: Point, method: str
+) -> bool:
+    """Tests whether point p is contained in the triangle formed by a, b, and c."""
+    if method == "area":
+        return is_point_in_triangle_area(a, b, c, p)
+    else:
+        raise NotImplementedError(f"Method: {method} is not supported.")
+
+
 def is_point_in_triangle_area(a: Point, b: Point, c: Point, p: Point) -> bool:
     """Tests whether point p is contained in the triangle formed by a, b, and c.
     This is done by comparing the area of abc with the areas of abp, apc, and pbc.
