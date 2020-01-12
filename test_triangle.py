@@ -1,4 +1,4 @@
-from triangle import Point, is_point_in_triangle_area
+from triangle import Point, is_point_in_triangle_area, Triangle
 
 
 def test_is_point_in_triangle():

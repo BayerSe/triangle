@@ -16,9 +16,14 @@ class Triangle:
 
     def get_area(self):
         """Computes the area of the triangle abc."""
-        return abs(self.a.x * (self.b.y - self.c.y) +
-                   self.b.x * (self.c.y - self.a.y) +
-                   self.c.x * (self.a.y - self.b.y)) / 2
+        return (
+            abs(
+                self.a.x * (self.b.y - self.c.y)
+                + self.b.x * (self.c.y - self.a.y)
+                + self.c.x * (self.a.y - self.b.y)
+            )
+            / 2
+        )
 
 
 def is_point_in_triangle_area(a: Point, b: Point, c: Point, p: Point) -> bool:
@@ -30,5 +35,6 @@ def is_point_in_triangle_area(a: Point, b: Point, c: Point, p: Point) -> bool:
     t_apc = Triangle(a, p, c)
     t_pbc = Triangle(p, b, c)
 
-    return isclose(t_abc.get_area(),
-                   t_abp.get_area() + t_apc.get_area() + t_pbc.get_area())
+    return isclose(
+        t_abc.get_area(), t_abp.get_area() + t_apc.get_area() + t_pbc.get_area()
+    )
